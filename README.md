@@ -1,60 +1,74 @@
-# streaming-04-multiple-consumers
+# RabbitMQ Work Queue Project
 
-> Use RabbitMQ to distribute tasks to multiple workers
+**Author:** Kim Leach
+**Date:** September 18, 2023
 
-One process will create task messages. Multiple worker processes will share the work. 
+## Overview
 
+This project demonstrates a RabbitMQ-based work queue system where one process creates task messages, and multiple worker processes share the work. The workers process the tasks concurrently, making it an efficient way to distribute and process tasks in parallel.
 
 ## Before You Begin
 
-1. Fork this starter repo into your GitHub.
-1. Clone your repo down to your machine.
-1. View / Command Palette - then Python: Select Interpreter
-1. Select your conda environment. 
+To get started with this project, follow these steps:
+
+1. Fork this starter repo into your GitHub account.
+
+2. Clone your forked repository to your local machine.
+
+3. Set up your Python environment:
+   
+   - Open your terminal or command prompt.
+   - Use the View/Command Palette in your code editor to select the Python interpreter.
+   - Choose your desired Conda environment.
 
 ## Read
 
-1. Read the [RabbitMQ Tutorial - Work Queues](https://www.rabbitmq.com/tutorials/tutorial-two-python.html)
-1. Read the code and comments in this repo.
+Before diving into the code, it's helpful to understand the concepts and principles behind this project. Please read the following resources:
 
-## RabbitMQ Admin 
+1. [RabbitMQ Tutorial - Work Queues](https://www.rabbitmq.com/tutorials/tutorial-two-python.html)
 
-RabbitMQ comes with an admin panel. When you run the task emitter, reply y to open it. 
+2. Carefully review the code and comments in this repository to understand how the RabbitMQ-based work queue system is implemented.
 
-(Python makes it easy to open a web page - see the code to learn how.)
+## RabbitMQ Admin
+
+RabbitMQ comes with an admin panel that allows you to monitor queues and message processing. When you run the task emitter, you'll have the option to open the RabbitMQ admin panel. Python makes it easy to open a web page programmatically.
 
 ## Execute the Producer
 
-1. Run emitter_of_tasks.py (say y to monitor RabbitMQ queues)
+To start creating and sending task messages to the RabbitMQ queue, follow these steps:
 
-Explore the RabbitMQ website.
+1. Run `v3_emitter_of_tasks.py` and respond with 'y' when prompted to monitor RabbitMQ queues.
+
+You can now explore the RabbitMQ website to see the status of the queues.
 
 ## Execute a Consumer / Worker
 
-1. Run listening_worker.py
+To create and start a worker that will listen for and process task messages, follow these steps:
 
-Will it terminate on its own? How do you know? 
+1. Run `v3_listener_of_tasks.py`.
+
+You might be wondering if the worker will terminate on its own or how to know when it's finished.
 
 ## Ready for Work
 
-1. Use your emitter_of_tasks to produce more task messages.
+Once you have a worker running, you can use the `v3_emitter_of_tasks.py` script to produce more task messages to be processed by the worker(s).
 
-## Start Another Listening Worker 
+## Start Another Listening Worker
 
-1. Use your listening_worker.py script to launch a second worker. 
+You can launch multiple workers to process tasks concurrently. Follow these steps:
 
-Follow the tutorial. 
-Add multiple tasks (e.g. First message, Second message, etc.)
-How are tasks distributed? 
-Monitor the windows with at least two workers. 
-Which worker gets which tasks?
+1. Use the `v3_listener_of_tasks.py` script to launch a second worker.
 
+Feel free to add multiple tasks, such as "First message," "Second message," and so on. Observe how the tasks are distributed among the workers. Monitor multiple terminal windows to see which worker processes which tasks.
 
 ## Reference
 
-- [RabbitMQ Tutorial - Work Queues](https://www.rabbitmq.com/tutorials/tutorial-two-python.html)
+For more in-depth information on work queues and RabbitMQ, refer to the official RabbitMQ tutorial:
 
+- [RabbitMQ Tutorial - Work Queues](https://www.rabbitmq.com/tutorials/tutorial-two-python.html)
 
 ## Screenshot
 
-See a running example with at least 3 concurrent process windows here:
+![Screenshot](3_Terminal_SS.png)
+
+See the running example above with at least three concurrent process windows. This screenshot demonstrates the project in action with a producer and multiple workers efficiently processing tasks in parallel.
